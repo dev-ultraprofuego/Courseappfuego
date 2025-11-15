@@ -1,0 +1,41 @@
+{
+  "name": "content-course-hub",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.108.1",
+    "@react-three/fiber": "^8.16.8",
+    "@supabase/supabase-js": "^2.44.2",
+    "@tailwindcss/typography": "^0.5.13",
+    "chart.js": "^4.4.3",
+    "next": "14.2.33",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-chartjs-2": "^5.2.0",
+    "three": "^0.166.1"
+  },
+  "devDependencies": {
+    "@next/swc-linux-x64-gnu": "14.2.33",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.166.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.33",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3"
+  },
+  "overrides": {
+    "three-mesh-bvh": "0.8.0",
+    "rimraf": "^5.0.7",
+    "glob": "^10.4.1"
+  }
+}
