@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Added JetBrains Mono for the code editor */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@700;900&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+html { scroll-behavior: smooth; }
+body { 
+    background-color: #0a0f0e; 
+    overflow-x: hidden; 
+    color: white;
+    min-width: 100vw;
+    min-height: 100dvh;
+}
+@keyframes wall-scroll {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+}
+.wall-column {
+    display: flex;
+    flex-direction: column;
+    animation: wall-scroll var(--duration) linear infinite var(--direction);
+}
+@media (prefers-reduced-motion: reduce) {
+    .wall-column { animation: none; }
+}
+.wall-container:hover .wall-column {
+    animation-play-state: paused;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+.admin-fire-effect {
+    font-weight: 900;
+    background: linear-gradient(-45deg, #ff0000, #ff5a00, #ff9a00, #ff5a00, #ff0000, #ff7b00);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fire-flow 4s ease-in-out infinite;
+    text-shadow: 0 0 4px rgba(255, 0, 0, 0.8), 0 0 10px rgba(255, 0, 0, 0.6);
+}
+@keyframes fire-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* For Admin Page */
+.admin-one-effect {
+    color: #ff3333;
+    text-shadow: 0 0 5px rgba(255, 51, 51, 0.7), 0 0 10px rgba(255, 51, 51, 0.5);
+    font-weight: 900;
+}
+.admin-umbrella {
+    text-shadow: 0 0 5px rgba(255, 51, 51, 1), 0 0 15px rgba(255, 51, 51, 0.8);
+}
+
+/* New Sharp CSS Mask Umbrella Style */
+.admin-umbrella-sharp {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(-45deg, #ff0000, #ff5a00, #ff9a00, #ff5a00, #ff0000, #ff7b00);
+    background-size: 300% 300%;
+    animation: fire-flow 4s ease-in-out infinite;
+    
+    /* CSS Mask to cut the icon shape out of the gradient block */
+    mask-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M23 12c0-3-1.8-5.65-4.35-6.71A9 9 0 1 0 3 12'/%3E%3Cpath d='M12 12v8a2 2 0 0 0 2 2'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M23 12c0-3-1.8-5.65-4.35-6.71A9 9 0 1 0 3 12'/%3E%3Cpath d='M12 12v8a2 2 0 0 0 2 2'/%3E%3C/svg%3E");
+    
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    
+    /* Alignment adjustment */
+    transform: translateY(4px) rotate(-15deg);
+    margin-top: 2px;
+}
+
+/* Hide the original SVG inside the span as the span itself is now the icon via mask */
+.admin-umbrella-sharp svg {
+    opacity: 0;
+}
+
+@keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100%); }
+}
+.scanline::before {
+    content: '';
+    position: absolute;
+    top: -10%; left: 0;
+    width: 100%; height: 5px;
+    background: var(--scanline-bg);
+    animation: scanline 6s linear infinite;
+    pointer-events: none;
+}
+
+/* Glitch effect for login screen */
+.glitch-effect {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+.glitch-effect::before,
+.glitch-effect::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0f0e;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0); 
+}
+.glitch-effect::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--glitch-1);
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+.glitch-effect::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--glitch-2), 2px 2px var(--glitch-1);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip: rect(42px, 9999px, 44px, 0); }
+  5% { clip: rect(17px, 9999px, 91px, 0); }
+  10% { clip: rect(81px, 9999px, 98px, 0); }
+  15% { clip: rect(21px, 9999px, 83px, 0); }
+  100% { clip: rect(32px, 9999px, 146px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(93px, 9999px, 4px, 0); }
+  5% { clip: rect(54px, 9999px, 12px, 0); }
+  10% { clip: rect(23px, 9999px, 78px, 0); }
+  15% { clip: rect(100px, 9999px, 100px, 0); }
+  100% { clip: rect(12px, 9999px, 146px, 0); }
+}
+
+/* Styles for shortcode-parsed carousel */
+.carousel-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    border-radius: 12px;
+}
+.carousel-container::-webkit-scrollbar { height: 8px; }
+.carousel-container::-webkit-scrollbar-track { background: #2d3748; border-radius: 10px; }
+.carousel-container::-webkit-scrollbar-thumb { background: #4a5568; border-radius: 10px; }
+.carousel-container::-webkit-scrollbar-thumb:hover { background: #718096; }
+.carousel-wrapper { display: flex; gap: 8px; }
+.carousel-wrapper img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+@media (hover: hover) {
+    .carousel-wrapper img { cursor: zoom-in; }
+    .carousel-wrapper img:hover { transform: scale(1.02); }
+}
+
+/* Billgang Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Utility to hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Madbax Style Mobile Badge - Skeleton Only (Colors handled by component) */
+@keyframes pillFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.small-pill {
+    display: inline-block;
+    margin: 0 0 10px;
+    padding: 10px 18px; /* Desktop padding */
+    border-radius: 999px;
+    font-family: "SF Pro Display", -apple-system, sans-serif !important;
+    font-weight: 700;
+    font-size: 13px; /* Desktop font size */
+    backdrop-filter: blur(4px);
+    width: max-content;
+    z-index: 3;
+    animation: pillFloat 3s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Force Mobile styles for small-pill to override desktop values */
+@media (max-width: 768px) {
+  .small-pill {
+    font-size: 10.5px !important;
+    padding: 7px 15px !important;
+    margin-bottom: 12px !important;
+  }
+}
